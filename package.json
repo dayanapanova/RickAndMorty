@@ -1,0 +1,53 @@
+{
+  "name": "RickAndMorty",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.5.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "4.0.1",
+    "react-loaders": "^3.0.1",
+    "react-router-dom": "^5.2.0",
+    "react-use": "^15.3.2",
+    "recompose": "^0.30.0",
+    "styled-components": "^5.1.1",
+    "styled-reset": "^4.1.6"
+  },
+  "scripts": {
+    "stats": "react-app-rewired build && source-map-explorer 'build/static/js/*.js' --html bundle.html && source-map-explorer 'build/static/js/*.js' --json bundle.json && sloc ./src > stats.txt && find ./src -type f -name '*.js' -printf '%s\t%p\n' | sort -nr >> stats.txt",
+    "start": "react-app-rewired start",
+    "build": "COMMIT_SHORT_SHA=$(git rev-parse HEAD | head -c 8) GENERATE_SOURCEMAP=false react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "babel-plugin-lodash": "^3.3.4",
+    "babel-plugin-styled-components": "^1.10.7",
+    "customize-cra": "^1.0.0",
+    "lodash-webpack-plugin": "^0.11.5",
+    "react-app-rewired": "^2.1.6",
+    "sloc": "^0.2.1",
+    "source-map-explorer": "^2.4.2"
+  }
+}
