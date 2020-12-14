@@ -1,4 +1,10 @@
 export default {
-	primary: '#edc566',
-	secondary: '#ff9800',
+	colors: {
+		primary: '#edc566',
+		secondary: '#ff9800',
+		light: '#fff',
+	},
+	sizes: {
+		sideBarWidth: 100,
+	}
 }
