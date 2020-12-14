@@ -2,7 +2,8 @@ import React from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components'
 import { Navigation } from '@/components';
-import {Home} from '@/containers';
+import {Home , Characters} from '@/containers';
+
 import { theme } from '@/constants'
 import BrowserHistory from '@/BrowserHistory';
 
@@ -18,6 +19,7 @@ const App = () => {
         <PageContent>
           <Switch>
             <Route path='/' exact component={Home} />
+            <Route path='/characters' exact component={Characters} />
           </Switch>
         </PageContent>
       </Router>
