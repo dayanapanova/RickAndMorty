@@ -17,7 +17,7 @@ const MenuItem = styled(Link)`
 const MENU_ITEMS = [
     {
         to: '/',
-        label: 'Home',
+        label: 'Episodes',
     },
     {
         to: '/characters',
