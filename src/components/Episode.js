@@ -2,13 +2,19 @@ import React from 'react';
 import styled from 'styled-components'
 
 const Box = styled.div`
-border: 1px solid red;
+    border: 1px solid red;
+
 `
+const Title = styled.h3`
+    font-size:30px;
+    color:${({theme})=> theme.colors.primary};
+`
+
 const EpisodeComponent = ({name}) => {
     
     return (
         <Box>
-            <h3>{name}</h3>
+            <Title>{name}</Title>
         </Box>
     )
 }
