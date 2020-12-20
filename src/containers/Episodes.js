@@ -1,6 +1,6 @@
 import React from 'react';
 import { Episode } from '@/components';
-import { Container, Row, Col } from 'react-grid-system';
+import { Row, Col } from 'react-grid-system';
 
 
 const MOCK_DATA = [
@@ -23,7 +23,7 @@ const MOCK_DATA = [
     {
         name: 'Taste Episode2',
         date: '15 octomber',
-        season: 's01',
+        season: 's02',
         characters: [
             {
                 name: 'Summer',
@@ -40,17 +40,20 @@ const Episodes = () => {
 
 
     return (
-        <Container>
-            <Row>
-                {MOCK_DATA.map(({ name, characters, date }) => {
-                    return (
-                        <Col sm={3}>
-                            <Episode name={name} characters={characters} date={date} />
-                        </Col>
-                    )
-                })}
-            </Row>
-        </Container>
+        <Row>
+            {MOCK_DATA.map(({ name, season, characters, date }) => {
+                return (
+                    <Col sm={3}>
+                        <Episode
+                            name={name}
+                            characters={characters}
+                            date={date}
+                            season={season}
+                        />
+                    </Col>
+                )
+            })}
+        </Row>
     )
 
 

@@ -8,7 +8,7 @@ import { theme } from '@/constants'
 import BrowserHistory from '@/BrowserHistory';
 
 const PageContent = styled.div`
-    padding-left: ${({ theme })=> theme.sizes.sideBarWidth + 20}px;
+    padding: ${({ theme: { sizes: { pageGutter, sideBarWidth } } })=> `${pageGutter}px ${pageGutter}px ${pageGutter}px ${sideBarWidth + pageGutter}px`};
 `
 
 const App = () => {
