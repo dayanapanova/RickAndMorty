@@ -30,7 +30,26 @@ const Season = styled.span`
     color: ${({theme})=> theme.colors.dark};
 `
 
-const EpisodeComponent = ({name, season}) => {
+const Date = styled.span`
+    color: red;
+    font-size: 14px;
+`
+const CharactersList = styled.div`
+    display: flex;
+    margin: 10px 0;
+`
+
+const Character = styled.span`
+    background-color: ${({theme})=> theme.colors.primary};
+    display: block;
+    margin-right: 10px;
+    color: #fff;
+    font-size: 12px;
+    padding: 2px 10px;
+    border-radius: 30px;
+`
+
+const EpisodeComponent = ({name, season, characters, date}) => {
     
     return (
         <Box>
@@ -38,6 +57,14 @@ const EpisodeComponent = ({name, season}) => {
                 <Title>{name}</Title>
                 <Season>{season}</Season>
             </BoxHead>
+            <div>
+                <Date>{date}</Date>
+                <CharactersList>
+                    {characters.map(({name}, index)=>(
+                        <Character key={`${name}-${index}`}>{name}</Character>
+                    ))}
+                </CharactersList>
+            </div>
         </Box>
     )
 }
