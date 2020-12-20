@@ -17,6 +17,22 @@ const MOCK_DATA = [
                 name: 'Rick',
                 id: 3
             },
+            {
+                name: 'Morty',
+                id: 2
+            },
+            {
+                name: 'Rick',
+                id: 3
+            },
+            {
+                name: 'Morty',
+                id: 2
+            },
+            {
+                name: 'Rick',
+                id: 3
+            },
         ],
 
     },

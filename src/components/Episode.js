@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components'
 
 const Box = styled.div`
@@ -36,13 +36,17 @@ const Date = styled.span`
 `
 const CharactersList = styled.div`
     display: flex;
+    flex-wrap: wrap;
     margin: 10px 0;
+    height: ${({isOpen})=> isOpen ? 'auto' : '20px'};
+    overflow: hidden;
 `
 
 const Character = styled.span`
     background-color: ${({theme})=> theme.colors.primary};
     display: block;
     margin-right: 10px;
+    margin-bottom: 10px;
     color: #fff;
     font-size: 12px;
     padding: 2px 10px;
@@ -50,6 +54,7 @@ const Character = styled.span`
 `
 
 const EpisodeComponent = ({name, season, characters, date}) => {
+    const [isOpen, setIsOpen] = useState(false);
     
     return (
         <Box>
@@ -59,11 +64,12 @@ const EpisodeComponent = ({name, season, characters, date}) => {
             </BoxHead>
             <div>
                 <Date>{date}</Date>
-                <CharactersList>
+                <CharactersList isOpen={isOpen}>
                     {characters.map(({name}, index)=>(
                         <Character key={`${name}-${index}`}>{name}</Character>
                     ))}
                 </CharactersList>
+                <div onClick={()=> setIsOpen(!isOpen)}>{isOpen ? 'Shrink' : 'Expand'}</div>
             </div>
         </Box>
     )
