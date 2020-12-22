@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import {useHistory} from 'react-router-dom';
 import { ArrowIcon } from '@/icons';
 
 const Box = styled.div`
@@ -43,7 +44,7 @@ const CharactersList = styled.div`
     overflow: hidden;
 `
 
-const Character = styled.span`
+const Chip = styled.span`
     background-color: ${({ theme }) => theme.colors.primary};
     display: block;
     margin-right: 10px;
@@ -68,20 +69,21 @@ transform:${({ isOpen }) => isOpen ? 'rotate(180deg)' : 'rotate(0)'};
 transition:transform 0.3s ease-in-out;
 `
 
-const EpisodeComponent = ({ name, season, characters, date }) => {
+const EpisodeComponent = ({ name, season, characters, date,id }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const history = useHistory();
 
     return (
         <Box>
             <BoxHead>
-                <Title>{name}</Title>
+                <Title onClick={()=>history.push(`/episodes/${id}`)}>{name}</Title>
                 <Season>{season}</Season>
             </BoxHead>
             <div>
                 <Date>{date}</Date>
                 <CharactersList isOpen={isOpen}>
-                    {characters.map(({ name }, index) => (
-                        <Character key={`${name}-${index}`}>{name}</Character>
+                    {characters.map(({ name,id }, index) => (
+                        <Chip onClick={()=> history.push(`/characters/${id}`)} key={`${name}-${index}`}>{name}</Chip>
                     ))}
                 </CharactersList>
                 <ExpandButton onClick={() => setIsOpen(!isOpen)}>

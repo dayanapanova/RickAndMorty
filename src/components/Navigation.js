@@ -28,7 +28,7 @@ Menu.Item = styled(NavLink)`
     padding: 10px 0;
 
     &.active {
-        background-color: red;
+        background-color: ${({theme})=> theme.colors.orange};
     }
 
     svg {
