@@ -9,7 +9,9 @@ const Box = styled.div`
     padding: 15px;
 
     ${({ theme }) => css`
-    ${console.log(theme)}
+        @media ${theme.mediaQueries.xsOnly} {
+            background-color: red;
+        }
     `};
 `
 

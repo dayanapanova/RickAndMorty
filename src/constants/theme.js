@@ -1,4 +1,4 @@
-import { mediaQueries } from './'
+import mediaQueries from './mediaQueries';
 
 export default {
 	colors: {
