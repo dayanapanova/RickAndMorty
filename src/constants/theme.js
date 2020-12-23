@@ -1,3 +1,5 @@
+import { mediaQueries } from './'
+
 export default {
 	colors: {
 		primary: '#edc566',
@@ -10,5 +12,6 @@ export default {
 	sizes: {
 		sideBarWidth: 100,
 		pageGutter: 40,
-	}
+	},
+	mediaQueries: mediaQueries,
 }

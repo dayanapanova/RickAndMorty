@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {useHistory} from 'react-router-dom';
 import { ArrowIcon } from '@/icons';
 
@@ -8,7 +8,13 @@ const Box = styled.div`
     box-shadow: 0 0 11px -5px rgba(0,0,0,0.3);
     padding: 15px;
 
+      ${({ theme }) => css`
+        @media ${theme.mediaQueries.xsOnly} {
+            background-color: red;
+        }
+    `;
 `
+
 const Title = styled.h3`
     font-size: 16px;
     color:${({ theme }) => theme.colors.dark};
@@ -60,6 +66,7 @@ const ExpandButton = styled.div`
    cursor:pointer;
    align-items:center;
 `
+
 ExpandButton.Icon = styled(ArrowIcon)`
 width:16px;
 height:16px;
