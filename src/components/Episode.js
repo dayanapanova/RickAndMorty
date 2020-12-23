@@ -8,11 +8,9 @@ const Box = styled.div`
     box-shadow: 0 0 11px -5px rgba(0,0,0,0.3);
     padding: 15px;
 
-      ${({ theme }) => css`
-        @media ${theme.mediaQueries.xsOnly} {
-            background-color: red;
-        }
-    `;
+    ${({ theme }) => css`
+    ${console.log(theme)}
+    `};
 `
 
 const Title = styled.h3`

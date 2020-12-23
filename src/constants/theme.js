@@ -13,5 +13,5 @@ export default {
 		sideBarWidth: 100,
 		pageGutter: 40,
 	},
-	mediaQueries: mediaQueries,
+	mediaQueries,
 }
