@@ -8,6 +8,7 @@ const Box = styled.div`
   overflow:hidden;
   border-radius:5px;
   cursor:pointer;
+  margin-bottom: 10px;
 `
 Box.LeftSide = styled.div`
  width:40%;

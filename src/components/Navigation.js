@@ -27,7 +27,7 @@ const Navigation = styled.div`
             background-color: ${({ theme }) => theme.colors.primary};
             padding: 20px 0;
         }
-    `};
+    `}
 `
 const LogoSvg = styled(LogoIcon)`
     width: 50px;
@@ -35,6 +35,15 @@ const LogoSvg = styled(LogoIcon)`
     fill: #fff;
     margin: 0 auto;
     display: block;
+`
+const ToggleWrapper = styled.div`
+${({ theme }) => css`
+        @media ${theme.mediaQueries.mdUp} {
+            display:none;
+        }
+
+        
+    `}
 `
 
 
@@ -46,7 +55,9 @@ export default () => {
             <Link to="/">
                 <LogoSvg />
             </Link>
-            <Toggle isOpen={isOpen} onClick={()=>setIsOpen(!isOpen)}/>
+            <ToggleWrapper>
+                <Toggle isOpen={isOpen} onClick={()=>setIsOpen(!isOpen)}/>
+            </ToggleWrapper>
             <Menu isOpen={isOpen} setIsOpen={setIsOpen}/>
             
         </Navigation>

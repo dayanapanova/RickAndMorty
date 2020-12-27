@@ -35,7 +35,7 @@ const Characters = () => {
     return (
         <Row>
             {CharacterInfo.map(({ id, image, name, status,gender  }, index) => (
-                <Col sm={3}>
+                <Col xs={12} sm={12} md={6} lg={3}>
 
                     <Character
                         onClick={() => history.push(`/characters/${id}`)}
