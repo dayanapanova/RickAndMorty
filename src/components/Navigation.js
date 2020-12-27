@@ -1,8 +1,9 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {  Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { LogoIcon, EpisodeIcon, CharacterIcon } from '@/icons';
-import {Menu} from '@/components'
+import {Menu,Toggle} from '@/components'
+
 
 const Navigation = styled.div`
     z-index:2;
@@ -10,8 +11,13 @@ const Navigation = styled.div`
     top: 0;
     ${({ theme }) => css`
         @media ${theme.mediaQueries.smDown} {
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:5px 15px;
             background-color: red;
-            width:100%;
+            right:0;
+            left:0;
             height:50px;
         }
 
@@ -34,14 +40,14 @@ const LogoSvg = styled(LogoIcon)`
 
 
 export default () => {
+    const [isOpen, setIsOpen]= useState(false);
     return (
         <Navigation>
             <Link to="/">
-                
                 <LogoSvg />
-
             </Link>
-            <Menu/>
+            <Toggle isOpen={isOpen} onClick={()=>setIsOpen(!isOpen)}/>
+            <Menu isOpen={isOpen} setIsOpen={setIsOpen}/>
             
         </Navigation>
     )

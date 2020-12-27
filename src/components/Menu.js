@@ -1,12 +1,23 @@
 import React from 'react';
 import { NavLink,  } from 'react-router-dom';
-import styled from 'styled-components';
+import styled,{css} from 'styled-components';
 import { EpisodeIcon, CharacterIcon } from '@/icons';
 
 const Menu = styled.ul`
     list-style: none;
     padding: 0;
     margin: 30px 0 0 0;
+    ${({ theme,isOpen }) => css`
+        @media ${theme.mediaQueries.smDown} {
+            display:${isOpen ? 'block': 'none'};
+            position:absolute;
+            width:100%;
+            height:100vh;
+            background-color:red;
+            top:30px;
+            left:0;
+        }
+    `};
 
 `
 
@@ -48,13 +59,13 @@ const MENU_ITEMS = [
     }
 ]
 
-const MenuComponent = ()=> {
+const MenuComponent = ({isOpen,setIsOpen})=> {
     
     return(
-        <Menu>
+        <Menu isOpen={isOpen}>
                 {MENU_ITEMS.map(({ label, to, icon: Icon }, index) => (
                     <li key={`${label}-${index}`}>
-                        <Menu.Item to={to} exact>
+                        <Menu.Item to={to} exact onClick={()=>setIsOpen(false)}>
                             <Icon />
                             {label}
                         </Menu.Item>
