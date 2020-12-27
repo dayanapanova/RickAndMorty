@@ -62,7 +62,7 @@ const Episodes = () => {
     return (
         <Row>
             {MOCK_DATA.map(({ name, season, characters, date,id }) => (
-                    <Col sm={3}>
+                    <Col xs={12} sm={6} md={3}>
                         <Episode
                             name={name}
                             characters={characters}

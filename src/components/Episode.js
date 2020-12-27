@@ -7,12 +7,7 @@ const Box = styled.div`
     background: #fff;
     box-shadow: 0 0 11px -5px rgba(0,0,0,0.3);
     padding: 15px;
-
-    ${({ theme }) => css`
-        @media ${theme.mediaQueries.xsOnly} {
-            background-color: red;
-        }
-    `};
+    margin-bottom:15px;
 `
 
 const Title = styled.h3`

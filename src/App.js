@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
-import styled, { ThemeProvider } from 'styled-components'
+import styled, { ThemeProvider,css } from 'styled-components'
 import { Navigation } from '@/components';
 import {Episodes , Characters,SingleCharacter,SingleEpisode} from '@/containers';
 
@@ -8,7 +8,17 @@ import { theme } from '@/constants'
 import BrowserHistory from '@/BrowserHistory';
 
 const PageContent = styled.div`
-    padding: ${({ theme: { sizes: { pageGutter, sideBarWidth } } })=> `${pageGutter}px ${pageGutter}px ${pageGutter}px ${sideBarWidth + pageGutter}px`};
+    
+
+    ${({ theme: { sizes: { pageGutter, sideBarWidth } } }) => css`
+        @media ${theme.mediaQueries.mdUp} {
+            padding:${pageGutter}px ${pageGutter}px ${pageGutter}px ${sideBarWidth + pageGutter}px;
+        }
+        @media ${theme.mediaQueries.smDown} {
+            padding:80px 15px 15px 15px;
+        }
+        
+    `};
 `
 
 const App = () => {

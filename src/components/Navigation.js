@@ -1,45 +1,28 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import styled from 'styled-components';
+import {  Link } from 'react-router-dom';
+import styled, { css } from 'styled-components';
 import { LogoIcon, EpisodeIcon, CharacterIcon } from '@/icons';
+import {Menu} from '@/components'
 
 const Navigation = styled.div`
+    z-index:2;
     position: fixed;
     top: 0;
-    height: 100%;
-    width: ${({ theme })=> theme.sizes.sideBarWidth}px;
-    background-color: ${({ theme })=> theme.colors.primary};
-    padding: 20px 0;
+    ${({ theme }) => css`
+        @media ${theme.mediaQueries.smDown} {
+            background-color: red;
+            width:100%;
+            height:50px;
+        }
+
+        @media ${theme.mediaQueries.mdUp} {
+            height: 100%;
+            width: ${({ theme }) => theme.sizes.sideBarWidth}px;
+            background-color: ${({ theme }) => theme.colors.primary};
+            padding: 20px 0;
+        }
+    `};
 `
-
-const Menu = styled.ul`
-    list-style: none;
-    padding: 0;
-    margin: 30px 0 0 0;
-`
-
-Menu.Item = styled(NavLink)`
-    color: ${({ theme })=> theme.colors.light};
-    text-align: center;
-    text-decoration: none;
-    display: block;
-    font-size: 12px;
-    text-transform: uppercase;
-    padding: 10px 0;
-
-    &.active {
-        background-color: ${({theme})=> theme.colors.orange};
-    }
-
-    svg {
-        fill: #fff;
-        display: block;
-        margin: 0 auto;
-        width: 30px;
-        height: 30px;
-    }
-`
-
 const LogoSvg = styled(LogoIcon)`
     width: 50px;
     height: 50px;
@@ -48,35 +31,18 @@ const LogoSvg = styled(LogoIcon)`
     display: block;
 `
 
-const MENU_ITEMS = [
-    {
-        to: '/',
-        label: 'Episodes',
-        icon: EpisodeIcon,
-    },
-    {
-        to: '/characters',
-        label: 'Characters',
-        icon: CharacterIcon,
-    }
-]
+
 
 export default () => {
     return (
         <Navigation>
             <Link to="/">
+                
                 <LogoSvg />
+
             </Link>
-            <Menu>
-                {MENU_ITEMS.map(({ label, to, icon: Icon }, index)=> (
-                    <li key={`${label}-${index}`}>
-                        <Menu.Item to={to} exact>
-                            <Icon />
-                            {label}
-                        </Menu.Item>
-                    </li>
-                ))}
-            </Menu>
+            <Menu/>
+            
         </Navigation>
     )
 };
