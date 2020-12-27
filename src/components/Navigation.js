@@ -15,7 +15,7 @@ const Navigation = styled.div`
             justify-content:space-between;
             align-items:center;
             padding:5px 15px;
-            background-color: red;
+            background-color: ${({ theme }) => theme.colors.primary};
             right:0;
             left:0;
             height:50px;

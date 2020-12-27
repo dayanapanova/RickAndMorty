@@ -13,7 +13,7 @@ const Menu = styled.ul`
             position:absolute;
             width:100%;
             height:100vh;
-            background-color:red;
+            background-color:${({ theme }) => theme.colors.primary};
             top:30px;
             left:0;
         }
