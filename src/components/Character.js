@@ -11,37 +11,36 @@ const Box = styled.div`
   margin-bottom: 10px;
 `
 Box.LeftSide = styled.div`
- width:40%;
+    width:40%;
 `
 Box.RightSide = styled.div`
- width:60%;
- padding:10px;
+    width:60%;
+    padding:10px;
 `
 const Image = styled.img`
-display:block;
-width:100%;
-height:100%;
-object-fit:cover;
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
 `
 const Name = styled.h3`
-color:${({ theme }) => theme.colors.dark};
-margin:0 0 10px 0;
+    color:${({ theme }) => theme.colors.dark};
+    margin:0 0 10px 0;
 `
 const Status = styled.span`
-background-color:${({ theme }) => theme.colors.silver};
-padding:2px 5px;
-margin-top:10px;
-font-size:14px;
-border-radius:3px;
-display:inline-block;
+    background-color:${({ theme }) => theme.colors.silver};
+    padding:2px 5px;
+    margin-top:10px;
+    font-size:14px;
+    border-radius:3px;
+    display:inline-block;
 `
 const Gender =styled.p`
-color:${({theme})=>theme.colors.dark};
-text-transform:uppercase;
-margin:0;
+    color:${({theme})=>theme.colors.dark};
+    text-transform:uppercase;
+    margin:0;
 `
 const Character = ({ onClick, image, name, status, gender }) => (
-
     <Box onClick={onClick}>
         <Box.LeftSide>
             <Image src={image} />

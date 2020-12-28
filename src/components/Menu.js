@@ -29,7 +29,7 @@ Menu.Item = styled(NavLink)`
     font-size: 12px;
     text-transform: uppercase;
     padding: 10px 0;
-    
+
 
     &.active {
         background-color: ${({ theme }) => theme.colors.orange};
@@ -59,19 +59,16 @@ const MENU_ITEMS = [
     }
 ]
 
-const MenuComponent = ({isOpen,setIsOpen})=> {
-    
-    return(
-        <Menu isOpen={isOpen}>
-                {MENU_ITEMS.map(({ label, to, icon: Icon }, index) => (
-                    <li key={`${label}-${index}`}>
-                        <Menu.Item to={to} exact onClick={()=>setIsOpen(false)}>
-                            <Icon />
-                            {label}
-                        </Menu.Item>
-                    </li>
-                ))}
-            </Menu>
-    )
-}
+const MenuComponent = ({isOpen,setIsOpen})=> (
+    <Menu isOpen={isOpen}>
+            {MENU_ITEMS.map(({ label, to, icon: Icon }, index) => (
+                <li key={`${label}-${index}`}>
+                    <Menu.Item to={to} exact onClick={()=>setIsOpen(false)}>
+                        <Icon />
+                        {label}
+                    </Menu.Item>
+                </li>
+            ))}
+        </Menu>
+)
 export default MenuComponent;

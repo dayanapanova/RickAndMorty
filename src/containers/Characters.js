@@ -4,7 +4,7 @@ import { Character } from '@/components';
 import { Row, Col } from "react-grid-system";
 
 
-const CharacterInfo = [
+const MOCK_DATA = [
     {
         image: 'https://rickandmortyapi.com/api/character/avatar/38.jpeg',
         name: 'Beth Smith',
@@ -34,8 +34,8 @@ const Characters = () => {
 
     return (
         <Row>
-            {CharacterInfo.map(({ id, image, name, status,gender  }, index) => (
-                <Col xs={12} sm={12} md={6} lg={3}>
+            {MOCK_DATA.map(({ id, image, name, status,gender  }, index) => (
+                <Col key={`${name}-${index}`} xs={12} sm={12} md={6} lg={3}>
 
                     <Character
                         onClick={() => history.push(`/characters/${id}`)}
@@ -43,7 +43,6 @@ const Characters = () => {
                         name={name}
                         status={status}
                         gender={gender}
-                        
                     />
                 </Col>
             ))}

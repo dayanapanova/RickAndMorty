@@ -63,37 +63,43 @@ const ExpandButton = styled.div`
 `
 
 ExpandButton.Icon = styled(ArrowIcon)`
-width:16px;
-height:16px;
-margin-left:10px;
-fill:black;
-transform:${({ isOpen }) => isOpen ? 'rotate(180deg)' : 'rotate(0)'};
-transition:transform 0.3s ease-in-out;
+    width:16px;
+    height:16px;
+    margin-left:10px;
+    fill:black;
+    transform:${({ isOpen }) => isOpen ? 'rotate(180deg)' : 'rotate(0)'};
+    transition:transform 0.3s ease-in-out;
 `
 
 const EpisodeComponent = ({ name, season, characters, date,id }) => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [caractersIsExpanded, setCaractersIsExpanded] = useState(false);
     const history = useHistory();
 
     return (
         <Box>
             <BoxHead>
-                <Title onClick={()=>history.push(`/episodes/${id}`)}>{name}</Title>
+                <Title onClick={()=> history.push(`/episodes/${id}`)}>{name}</Title>
                 <Season>{season}</Season>
             </BoxHead>
             <div>
                 <Date>{date}</Date>
-                <CharactersList isOpen={isOpen}>
+                <CharactersList isOpen={caractersIsExpanded}>
                     {characters.map(({ name,id }, index) => (
-                        <Chip onClick={()=> history.push(`/characters/${id}`)} key={`${name}-${index}`}>{name}</Chip>
+                        <Chip
+                            key={`${name}-${index}`}
+                            onClick={()=> history.push(`/characters/${id}`)}
+                        >
+                            {name}
+                        </Chip>
                     ))}
                 </CharactersList>
-                <ExpandButton onClick={() => setIsOpen(!isOpen)}>
-                    {isOpen ? 'Shrink' : 'Expand'}
-                    <ExpandButton.Icon isOpen={isOpen} />
+                <ExpandButton onClick={() => setCaractersIsExpanded(!caractersIsExpanded)}>
+                    {caractersIsExpanded ? 'Shrink' : 'Expand'}
+                    <ExpandButton.Icon isOpen={caractersIsExpanded} />
                 </ExpandButton>
             </div>
         </Box>
     )
 }
+
 export default EpisodeComponent;

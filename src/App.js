@@ -8,7 +8,7 @@ import { theme } from '@/constants'
 import BrowserHistory from '@/BrowserHistory';
 
 const PageContent = styled.div`
-    
+
 
     ${({ theme: { sizes: { pageGutter, sideBarWidth } } }) => css`
         @media ${theme.mediaQueries.mdUp} {
@@ -17,7 +17,7 @@ const PageContent = styled.div`
         @media ${theme.mediaQueries.smDown} {
             padding:80px 15px 15px 15px;
         }
-        
+
     `};
 `
 
@@ -28,10 +28,10 @@ const App = () => {
         <Navigation />
         <PageContent>
           <Switch>
-            <Route path='/' exact component={Episodes} />
-            <Route path='/characters' exact component={Characters} />
-            <Route path='/characters/:id' exact component={SingleCharacter}/>
-            <Route path='/episodes/:id' exact component={SingleEpisode}/>
+            <Route path='/' exact={true} component={Episodes} />
+            <Route path='/characters' exact={true} component={Characters} />
+            <Route path='/characters/:id' exact={true} component={SingleCharacter}/>
+            <Route path='/episodes/:id' exact={true} component={SingleEpisode}/>
           </Switch>
         </PageContent>
       </Router>

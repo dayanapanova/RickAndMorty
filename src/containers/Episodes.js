@@ -58,11 +58,10 @@ const MOCK_DATA = [
 
 const Episodes = () => {
 
-
     return (
         <Row>
-            {MOCK_DATA.map(({ name, season, characters, date,id }) => (
-                    <Col xs={12} sm={6} md={4} lg={3}>
+            {MOCK_DATA.map(({ name, season, characters, date,id }, index) => (
+                    <Col key={`${name}-${index}`} xs={12} sm={6} md={4} lg={3}>
                         <Episode
                             name={name}
                             characters={characters}
