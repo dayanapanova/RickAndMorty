@@ -26,6 +26,7 @@ export const store = rootStore.create({
   },
   charactersState: {
     charactersList: [],
+    singleCharacter: {},
   }
 })
 
