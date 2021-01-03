@@ -8,7 +8,6 @@ import { inject, observer } from 'mobx-react';
 const Episodes = ({episodesState}) => {
     const {getEpisodes,episodesList} = episodesState;
     const episodesListJSON = episodesList?.toJSON();
-    console.log(episodesListJSON);
     useEffect(() => {
       getEpisodes()
     }, []);
