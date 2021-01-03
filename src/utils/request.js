@@ -1,11 +1,5 @@
 import axios from 'axios'
 
-export const HTTPmethods = {
-  GET: 'get',
-  POST: 'post',
-  DELETE: 'delete',
-  PUT: 'put'
-}
 
 export default ({
   successMessage,

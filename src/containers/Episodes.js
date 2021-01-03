@@ -1,66 +1,21 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { Episode } from '@/components';
 import { Row, Col } from 'react-grid-system';
+import { compose } from 'recompose'
+import { inject, observer } from 'mobx-react';
 
 
-const MOCK_DATA = [
-    {
-        id: 1,
-        name: 'Taste Episode',
-        date: '13 octomber',
-        season: 's01',
-        characters: [
-            {
-                name: 'Morty',
-                id: 2
-            },
-            {
-                name: 'Rick',
-                id: 3
-            },
-            {
-                name: 'Morty',
-                id: 2
-            },
-            {
-                name: 'Rick',
-                id: 3
-            },
-            {
-                name: 'Morty',
-                id: 2
-            },
-            {
-                name: 'Rick',
-                id: 3
-            },
-        ],
-
-    },
-    {
-        id:2,
-        name: 'Taste Episode2',
-        date: '15 octomber',
-        season: 's02',
-        characters: [
-            {
-                name: 'Summer',
-                id: 4
-            },
-            {
-                name: 'Bett',
-                id: 5
-            },
-        ]
-    }
-]
-
-
-const Episodes = () => {
+const Episodes = ({episodesState}) => {
+    const {getEpisodes,episodesList} = episodesState;
+    const episodesListJSON = episodesList?.toJSON();
+    console.log(episodesListJSON);
+    useEffect(() => {
+      getEpisodes()
+    }, []);
 
     return (
         <Row>
-            {MOCK_DATA.map(({ name, season, characters, date,id }, index) => (
+            {episodesListJSON.map(({ name, season, characters, date,id }, index) => (
                     <Col key={`${name}-${index}`} xs={12} sm={6} md={4} lg={3}>
                         <Episode
                             name={name}
@@ -77,4 +32,7 @@ const Episodes = () => {
 
 };
 
-export default Episodes;
+export default compose(
+    inject(({ store: { episodesState } }) => ({ episodesState })),
+    observer
+  )(Episodes)

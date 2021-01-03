@@ -8,7 +8,7 @@ export default types.model('CharactersStore', {
   .actions(self => {
     return {
       getCharacters: flow(function* getCharacters () {
-        self.charactersList = []
+        
 
         const response = yield request({
           method: 'get',

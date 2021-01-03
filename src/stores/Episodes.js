@@ -1,5 +1,5 @@
 import { types, flow } from 'mobx-state-tree'
-import { request, HTTPmethods } from '@/utils'
+import { request } from '@/utils'
 
 export default types.model('EpisodesStore', {
   episodesList: types.maybe(types.array(types.frozen())),
@@ -7,14 +7,13 @@ export default types.model('EpisodesStore', {
   .actions(self => {
     return {
       getEpisodes: flow(function* getEpisodes () {
-        self.episodesList = []
 
         const response = yield request({
-          method: HTTPmethods.GET,
+          method:'get',
           url: '/episode',
         })
 
-        self.episodesList = response.data
+        self.episodesList = response.data.results
       }),
     }
   })
