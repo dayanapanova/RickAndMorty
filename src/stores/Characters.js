@@ -18,7 +18,6 @@ export default types.model('CharactersStore', {
         self.charactersList = response?.data?.results
       }),
       getSingleCharacter: flow(function* getSingleCharacter(id) {
-        self.singleCharacter = {}
 
         const response = yield request({
           method: 'get',
