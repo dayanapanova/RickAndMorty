@@ -23,6 +23,7 @@ const PageContent = styled.div`
 export const store = rootStore.create({
   episodesState: {
     episodesList: [],
+    singleEpisode: {},
   },
   charactersState: {
     charactersList: [],
