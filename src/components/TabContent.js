@@ -58,9 +58,9 @@ const TabContentComponent = ({items})=> {
                 </Tab>
             ))}    
         </TabsNavigation>
-        {items.map(({title},index)=> index===currentTab ? (
+        {items.map(({component:Component},index)=> index===currentTab ? (
             <TabItem>
-                {title}
+                <Component/>
             </TabItem>
         ) : null)}
     </TabContent>

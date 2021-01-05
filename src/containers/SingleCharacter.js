@@ -31,22 +31,48 @@ const SingleCharacter = ({ charactersState, match }) => {
         getSingleCharacter(id);
     }, []);
 
+    const InfoTab = () => (
+        <div>
+            <ul>
+                <li>status:{status}</li>
+                <li>gender:{gender}</li>
+                <li>species:{species}</li>
+            </ul>
+        </div>
+    )
+
+    const EpisodeTab = () => (
+        <div>Episode tab</div>
+    )
+
+    const OriginTab = () => (
+        <div>Origin tab tab</div>
+    )
+
+    const LocationsTab = () => (
+        <div>Location tab</div>
+    )
+
     const TABS = [
         {
             icon:InfoIcon,
-            title:'Information'
+            title:'Information',
+            component:InfoTab
         },
         {
             icon:EpisodeIcon,
-            title:'Episodes'
+            title:'Episodes',
+            component:EpisodeTab
         },
         {
             icon:PlanetIcon,
-            title:'Origin'
+            title:'Origin',
+            component:OriginTab
         },
         {
             icon:LocationIcon,
-            title:'Location'
+            title:'Location',
+            component:LocationsTab
         }
     ]
     
