@@ -4,38 +4,9 @@ import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import {InfoIcon, PlanetIcon,EpisodeIcon,LocationIcon} from '@/icons';
 import {Row,Col} from 'react-grid-system';
+import {TabContent} from '@/components';
 
-const Tabs = styled.div`
-    width:100%;
-    background-color:${({ theme }) => theme.colors.orange};
-    color:${({ theme }) => theme.colors.light};
-    padding:0px;
-    display:flex;
-    justify-content:space-between;
-    
 
-`
-const Tab = styled.div`
-    position:relative;
-    padding:10px;
-    background-color: ${({isActive,theme})=>isActive ? theme.colors.light : 'transperant'};
-    cursor:${({isActive})=>isActive ? 'default' : 'pointer'};
-
-    svg {
-        width:30px;
-        height:30px;
-        fill: ${({isActive,theme})=>isActive ? theme.colors.primary : theme.colors.light};
-        margin: 0 auto;
-        display: block;
-    }
-    
-    span {
-        display: block;
-        text-align: center;
-        color: ${({isActive,theme})=>isActive ? theme.colors.primary : theme.colors.light};
-    }
-    
-`
 const Head =styled.div`
     text-align:center;
 `
@@ -55,7 +26,6 @@ const SingleCharacter = ({ charactersState, match }) => {
     const { singleCharacter, getSingleCharacter } = charactersState;
     const { status,name,image,gender,species } = singleCharacter;
     const { id } = match?.params
-    const [currentTab, setCurrentTab] =useState(0);
 
     useEffect(()=> {
         getSingleCharacter(id);
@@ -87,17 +57,7 @@ const SingleCharacter = ({ charactersState, match }) => {
                     <Head>
                         <Title>{name}</Title>
                     </Head>
-                    <Tabs>
-                        {TABS.map(({icon:Icon,title},index)=>(
-                            <Tab 
-                                isActive={index===currentTab}
-                                onClick={()=>setCurrentTab(index)}
-                            >
-                                <Icon/>
-                                <span>{title}</span>
-                            </Tab>
-                        ))}
-                    </Tabs>
+                    <TabContent items={TABS}/>
             </Col>
         </Row>
     )
