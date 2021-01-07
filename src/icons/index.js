@@ -5,3 +5,5 @@ export {default as ArrowIcon} from './ArrowIcon';
 export {default as InfoIcon} from './InfoIcon';
 export {default as PlanetIcon} from './PlanetIcon';
 export {default as LocationIcon} from './LocationIcon';
+export {default as AlienIcon} from './AlienIcon';
+export {default as GenderIcon} from './GenderIcon';

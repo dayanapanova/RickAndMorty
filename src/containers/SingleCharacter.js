@@ -2,7 +2,7 @@ import React, { useEffect,useState } from 'react';
 import { compose } from 'recompose'
 import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
-import {InfoIcon, PlanetIcon,EpisodeIcon,LocationIcon} from '@/icons';
+import {InfoIcon, PlanetIcon,EpisodeIcon,LocationIcon,AlienIcon,GenderIcon, CharacterIcon} from '@/icons';
 import {Row,Col} from 'react-grid-system';
 import {TabContent} from '@/components';
 
@@ -21,6 +21,34 @@ const CharacterImage = styled.img`
     height:100px;
     margin: 0 auto;
 `
+const InfoUl = styled.ul`
+    list-style:none;
+    font-size:15px;
+`
+const InfoLi = styled.li`
+    font-size: 18px;
+    color:${({ theme }) => theme.colors.dark};
+    margin: 15px 0;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.dark};
+    
+`
+const AlienImage = styled(AlienIcon)`
+    width:30px;
+    height:30px;
+    fill:#fff;
+    margin-right: 10px;
+`
+const GenderImage = styled(GenderIcon)`
+    width:30px;
+    height:30px;
+    margin-right:10px;
+`
+const IconImage = styled(CharacterIcon)`
+    width:30px;
+    height:30px;
+    margin-right:10px;
+`
+
 
 const SingleCharacter = ({ charactersState, match }) => {
     const { singleCharacter, getSingleCharacter } = charactersState;
@@ -33,11 +61,11 @@ const SingleCharacter = ({ charactersState, match }) => {
 
     const InfoTab = () => (
         <div>
-            <ul>
-                <li>status:{status}</li>
-                <li>gender:{gender}</li>
-                <li>species:{species}</li>
-            </ul>
+            <InfoUl>
+                <InfoLi><AlienImage/>status: {status}</InfoLi>
+                <InfoLi><GenderImage/>gender: {gender}</InfoLi>
+                <InfoLi><IconImage/>species: {species}</InfoLi>
+            </InfoUl>
         </div>
     )
 
