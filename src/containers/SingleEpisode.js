@@ -7,14 +7,26 @@ const EpisodeHolder = styled.div`
     border:1px solid black;
 `
 
-const SingleEpisode = ({episodesState,match}) => {
+const SingleEpisode = ({episodesState, charactersState, match}) => {
     const { singleEpisode, getSingleEpisode } = episodesState;
-    const { name, air_date,episode } = singleEpisode;
+    const {getMultipleCharacters,charactersList} = charactersState;
+    const { name, air_date,episode,characters } = singleEpisode;
     const { id } = match?.params
+
+    const charactersIDs = characters?.map((url)=>  url.replace(/[^0-9]/g,''))
+    const charactersListJSON = charactersList?.toJSON(); 
 
     useEffect(()=> {
         getSingleEpisode(id);
     }, []);
+  
+    useEffect(()=> {
+        if (charactersIDs?.length && !charactersListJSON.length) {
+            getMultipleCharacters(charactersIDs);
+        }
+    }, [charactersIDs,charactersListJSON]);
+
+    console.log(charactersListJSON); 
 
     return (
         <EpisodeHolder>
@@ -27,7 +39,7 @@ const SingleEpisode = ({episodesState,match}) => {
 }
 
 export default compose(
-    inject(({ store: { episodesState } }) => ({ episodesState })),
+    inject(({ store: { episodesState,charactersState } }) => ({ episodesState,charactersState })),
     observer
   )(SingleEpisode)
 

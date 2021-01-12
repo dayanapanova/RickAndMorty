@@ -8,8 +8,6 @@ export default types.model('CharactersStore', {
   .actions(self => {
     return {
       getCharacters: flow(function* getCharacters () {
-        
-
         const response = yield request({
           method: 'get',
           url: '/character',
@@ -18,7 +16,6 @@ export default types.model('CharactersStore', {
         self.charactersList = response?.data?.results
       }),
       getSingleCharacter: flow(function* getSingleCharacter(id) {
-
         const response = yield request({
           method: 'get',
           url: `/character/${id}`,
@@ -26,5 +23,12 @@ export default types.model('CharactersStore', {
 
         self.singleCharacter = response?.data
       }),
+      getMultipleCharacters: flow(function* getMultipleCharacters(IDs){
+        const response = yield request({
+          method: 'get',
+          url: `/character/${IDs?.join()}`
+        })
+        self.charactersList = response?.data
+      })
     }
   })
